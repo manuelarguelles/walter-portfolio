@@ -6,9 +6,11 @@ Portafolio web interactivo construido a partir del PDF original de **Walter Alej
 
 | Versión | Concepto | Stack visual | URL en vivo |
 |---------|---------|--------------|-------------|
-| **A — Claude design puro** | Look editorial calmado tipo revista. Paleta crema-terracota, tipografía Fraunces italic, mucho whitespace. | Inter + Fraunces (opsz 144) | _completar tras deploy_ |
-| **B — Branding Walter refinado ★** | Mantiene el branding turquesa/azul del PDF original, con principios de Claude design (espaciado, tipografía, jerarquía). | Inter + Fraunces · paleta gov | _completar tras deploy_ |
-| **C — Showcase agresivo** | B + dark mode toggle, parallax en hero, tilt 3D en cards, marquee de skills, timeline scroll-driven, easter egg Konami. | B + animaciones avanzadas | _completar tras deploy_ |
+| **A — Claude design puro** | Look editorial calmado tipo revista. Paleta crema-terracota, tipografía Fraunces italic, mucho whitespace. | Inter + Fraunces (opsz 144) | <https://walter-portfolio-a.vercel.app> |
+| **B — Branding Walter refinado ★** | Mantiene el branding turquesa/azul del PDF original, con principios de Claude design (espaciado, tipografía, jerarquía). | Inter + Fraunces · paleta gov | <https://walter-portfolio-b.vercel.app> |
+| **C — Showcase agresivo** | B + dark mode toggle, parallax en hero, tilt 3D en cards, marquee de skills, timeline scroll-driven, easter egg Konami. | B + animaciones avanzadas | <https://walter-portfolio-c.vercel.app> |
+
+📦 **Repositorio**: <https://github.com/manuelarguelles/walter-portfolio>
 
 > La versión **B** es la recomendada para uso principal: respeta el branding existente de Walter y comunica criterio (no reemplaza ciegamente la identidad). **A** es para audiencias que valoren estética editorial/Anthropic. **C** suma para entrevistas técnicas donde demostrar interacción premium.
 
