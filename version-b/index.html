@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Walter Castañeda · UI/UX Designer · Portafolio 2026</title>
+<meta name="description" content="Portafolio interactivo de Walter Castañeda Torres — Diseñador UI/UX. Prototipos, dashboards y case studies con foco en accesibilidad." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --turq: #42C0C5;
+    --turq-dark: #2F9DA1;
+    --turq-soft: #E6F7F8;
+    --ink: #0F2A2D;
+    --ink-soft: #3D5256;
+    --line: #E5EAEB;
+    --bg: #FAFBFB;
+    --paper: #FFFFFF;
+    --accent: #1E3A8A;
+    --warn: #E0AC4F;
+    --error: #D55050;
+    --ok: #4FA478;
+    --shadow-sm: 0 1px 2px rgba(15,42,45,0.06), 0 1px 3px rgba(15,42,45,0.04);
+    --shadow-md: 0 4px 16px rgba(15,42,45,0.06), 0 2px 4px rgba(15,42,45,0.04);
+    --shadow-lg: 0 24px 48px -12px rgba(15,42,45,0.18);
+    --r-sm: 8px;
+    --r-md: 14px;
+    --r-lg: 20px;
+    --r-xl: 28px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); }
+
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  ::selection { background: var(--turq); color: #fff; }
+
+  /* Focus rings */
+  :focus-visible {
+    outline: 2px solid var(--turq);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    background: rgba(250,251,251,0.85);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
+  .brand-dot {
+    width: 30px; height: 30px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--turq), var(--accent));
+    display: grid; place-items: center; color: white; font-family: 'Fraunces', serif; font-weight: 700;
+  }
+  .nav-links { display: flex; gap: 6px; align-items: center; }
+  .nav-links a {
+    padding: 8px 14px; border-radius: 999px; font-size: 14px; color: var(--ink-soft);
+    transition: all 0.2s ease;
+  }
+  .nav-links a:hover { background: var(--turq-soft); color: var(--ink); }
+  .nav-cta {
+    background: var(--ink); color: white; padding: 9px 18px; border-radius: 999px;
+    font-weight: 500; font-size: 14px; transition: all 0.2s ease;
+  }
+  .nav-cta:hover { background: var(--turq); transform: translateY(-1px); }
+
+  @media (max-width: 880px) {
+    .nav-links { display: none; }
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    max-width: 1200px; margin: 0 auto; padding: 80px 24px 60px;
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 999px;
+    background: var(--turq-soft); color: var(--turq-dark);
+    font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--turq);
+    box-shadow: 0 0 0 4px rgba(66,192,197,0.2);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(66,192,197,0.2); }
+    50% { box-shadow: 0 0 0 8px rgba(66,192,197,0); }
+  }
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 72px); font-weight: 700; margin-bottom: 16px;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--turq-dark);
+    background: linear-gradient(120deg, var(--turq) 0%, var(--accent) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero-lead {
+    font-size: 19px; color: var(--ink-soft); margin-bottom: 32px; max-width: 540px;
+  }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 22px; border-radius: 12px; font-weight: 600; font-size: 15px;
+    transition: all 0.2s ease; cursor: pointer; border: none; font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--ink); color: white;
+  }
+  .btn-primary:hover { background: var(--turq-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .btn-ghost {
+    background: var(--paper); color: var(--ink); border: 1px solid var(--line);
+  }
+  .btn-ghost:hover { border-color: var(--turq); color: var(--turq-dark); }
+
+  .hero-stats { display: flex; gap: 32px; }
+  .stat-num { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; color: var(--ink); line-height: 1; }
+  .stat-label { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
+
+  .hero-figure { position: relative; }
+  .hero-figure img { width: 100%; max-width: 520px; margin: 0 auto; filter: drop-shadow(0 24px 48px rgba(15,42,45,0.18)); }
+  .hero-blob {
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 60% 40%, rgba(66,192,197,0.18) 0%, transparent 60%);
+    z-index: -1;
+  }
+
+  @media (max-width: 880px) {
+    .hero { grid-template-columns: 1fr; padding: 48px 24px 32px; gap: 32px; text-align: left; }
+    .hero-figure img { max-width: 320px; }
+  }
+
+  /* ============ TRUSTBAR ============ */
+  .trustbar {
+    background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    padding: 28px 0;
+  }
+  .trustbar-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .badge {
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 16px; border-radius: var(--r-md);
+  }
+  .badge-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, #FFF5DC, #FFE6A3);
+    display: grid; place-items: center; flex-shrink: 0;
+    color: #8C5A14;
+  }
+  .badge-icon svg { width: 22px; height: 22px; }
+  .badge-title { font-weight: 600; font-size: 14px; color: var(--ink); }
+  .badge-sub { font-size: 12.5px; color: var(--ink-soft); }
+  @media (max-width: 720px) {
+    .trustbar-inner { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  /* ============ SECTION ============ */
+  section { padding: 96px 0; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .section-head { margin-bottom: 48px; max-width: 720px; }
+  .section-kicker {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--turq-dark); margin-bottom: 12px;
+  }
+  .section-title { font-size: clamp(32px, 4vw, 48px); font-weight: 600; margin-bottom: 14px; }
+  .section-lead { font-size: 18px; color: var(--ink-soft); }
+
+  /* ============ FILTROS ============ */
+  .filters {
+    display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap;
+  }
+  .filter-chip {
+    padding: 9px 18px; border-radius: 999px;
+    background: var(--paper); border: 1px solid var(--line);
+    font-size: 14px; font-weight: 500; color: var(--ink-soft);
+    cursor: pointer; transition: all 0.2s ease; font-family: inherit;
+  }
+  .filter-chip:hover { border-color: var(--turq); color: var(--ink); }
+  .filter-chip.active {
+    background: var(--ink); color: white; border-color: var(--ink);
+  }
+  .filter-count {
+    display: inline-block; margin-left: 6px; opacity: 0.6; font-size: 12px;
+  }
+
+  /* ============ GRID PROTOTIPOS ============ */
+  .proto-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px;
+  }
+  .proto-card {
+    background: var(--paper); border-radius: var(--r-lg);
+    border: 1px solid var(--line); overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer; display: flex; flex-direction: column;
+  }
+  .proto-card:hover {
+    transform: translateY(-6px); border-color: transparent;
+    box-shadow: var(--shadow-lg);
+  }
+  .proto-img-wrap {
+    aspect-ratio: 16/9; background: var(--turq-soft); overflow: hidden; position: relative;
+  }
+  .proto-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+    transition: transform 0.5s ease;
+  }
+  .proto-card:hover .proto-img-wrap img { transform: scale(1.04); }
+  .proto-platform {
+    position: absolute; top: 12px; left: 12px;
+    padding: 5px 10px; border-radius: 6px;
+    background: rgba(15,42,45,0.85); color: white;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+    backdrop-filter: blur(6px);
+  }
+  .proto-award {
+    position: absolute; top: 12px; right: 12px;
+    padding: 5px 10px; border-radius: 6px;
+    background: linear-gradient(135deg, #FFD86B, #E0AC4F);
+    color: #5C3F00; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .proto-body { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+  .proto-name {
+    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600;
+  }
+  .proto-desc { font-size: 14.5px; color: var(--ink-soft); flex: 1; }
+  .proto-meta {
+    display: flex; align-items: center; gap: 10px; margin-top: 12px;
+    padding-top: 14px; border-top: 1px solid var(--line);
+    font-size: 13px;
+  }
+  .proto-link {
+    color: var(--turq-dark); font-weight: 600; display: inline-flex; align-items: center; gap: 4px;
+  }
+  .proto-link:hover { color: var(--ink); }
+
+  /* ============ CASE STUDY (Timeline) ============ */
+  .casestudy {
+    background: linear-gradient(180deg, var(--paper) 0%, var(--turq-soft) 100%);
+    border-radius: var(--r-xl); padding: 60px 48px;
+    margin-top: 0;
+  }
+  .case-head { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; margin-bottom: 48px; }
+  .case-title { font-size: 36px; font-weight: 600; margin-bottom: 8px; }
+  .case-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    padding: 5px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 500;
+    background: var(--paper); color: var(--ink-soft); border: 1px solid var(--line);
+  }
+  .timeline {
+    position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 32px 64px;
+  }
+  .timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(180deg, var(--turq), transparent);
+    transform: translateX(-50%);
+  }
+  .step {
+    background: var(--paper); padding: 24px 28px; border-radius: var(--r-md);
+    border: 1px solid var(--line); position: relative;
+    transition: all 0.3s ease;
+  }
+  .step:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--turq); }
+  .step::after {
+    content: ''; position: absolute; top: 32px; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--turq); border: 3px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--turq);
+  }
+  .step:nth-child(odd)::after { right: -39px; }
+  .step:nth-child(even)::after { left: -39px; }
+  .step:nth-child(even) { grid-column: 2; }
+  .step:nth-child(odd) { grid-column: 1; }
+  .step-num {
+    font-family: 'Fraunces', serif; font-size: 14px; font-weight: 700; color: var(--turq-dark);
+    letter-spacing: 0.1em; margin-bottom: 6px;
+  }
+  .step-name { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 600; margin-bottom: 8px; }
+  .step-list { list-style: none; }
+  .step-list li {
+    font-size: 14px; color: var(--ink-soft); padding: 3px 0; padding-left: 18px;
+    position: relative;
+  }
+  .step-list li::before {
+    content: ''; position: absolute; left: 0; top: 11px;
+    width: 6px; height: 1.5px; background: var(--turq-dark);
+  }
+
+  .case-impact {
+    margin-top: 48px; background: var(--paper); padding: 28px 32px;
+    border-radius: var(--r-md); display: grid; grid-template-columns: auto 1fr; gap: 20px;
+    align-items: center; border-left: 4px solid var(--turq);
+  }
+  .impact-icon {
+    width: 56px; height: 56px; border-radius: 16px;
+    background: linear-gradient(135deg, var(--turq) 0%, var(--accent) 100%);
+    display: grid; place-items: center; color: white; font-size: 28px;
+  }
+
+  @media (max-width: 720px) {
+    .casestudy { padding: 40px 24px; }
+    .case-head { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr; gap: 16px; }
+    .timeline::before { left: 16px; }
+    .step:nth-child(odd), .step:nth-child(even) { grid-column: 1; padding-left: 40px; }
+    .step:nth-child(odd)::after, .step:nth-child(even)::after { left: 9px; right: auto; }
+  }
+
+  /* ============ DIAGRAMAS ============ */
+  .flow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .flow-card {
+    background: var(--paper); border-radius: var(--r-lg);
+    border: 1px solid var(--line); overflow: hidden;
+  }
+  .flow-head { padding: 20px 24px; border-bottom: 1px solid var(--line); }
+  .flow-name { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 600; }
+  .flow-desc { font-size: 13.5px; color: var(--ink-soft); margin-top: 2px; }
+  .flow-img-wrap {
+    padding: 24px; cursor: zoom-in; background: #FAFCFD;
+  }
+  .flow-img-wrap img { width: 100%; }
+  @media (max-width: 720px) {
+    .flow-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ DASHBOARDS ============ */
+  .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .dash-card {
+    background: var(--paper); border-radius: var(--r-lg);
+    overflow: hidden; border: 1px solid var(--line);
+    transition: all 0.3s ease; cursor: zoom-in;
+  }
+  .dash-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+  .dash-img-wrap { aspect-ratio: 16/10; overflow: hidden; background: #FFF; }
+  .dash-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s ease; }
+  .dash-card:hover .dash-img-wrap img { transform: scale(1.02); }
+  .dash-body { padding: 18px 22px; }
+  .dash-name { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .dash-cat { font-size: 12.5px; color: var(--turq-dark); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+  @media (max-width: 880px) {
+    .dash-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ GALERÍA TABS ============ */
+  .tabs {
+    display: inline-flex; gap: 4px; padding: 5px; background: var(--paper);
+    border: 1px solid var(--line); border-radius: 999px; margin-bottom: 28px;
+  }
+  .tab {
+    padding: 9px 18px; border-radius: 999px; font-size: 14px; font-weight: 500;
+    color: var(--ink-soft); cursor: pointer; transition: all 0.2s ease;
+    border: none; background: transparent; font-family: inherit;
+  }
+  .tab:hover { color: var(--ink); }
+  .tab.active { background: var(--ink); color: white; }
+
+  .gallery-panel { display: none; }
+  .gallery-panel.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .gallery-grid { display: grid; gap: 24px; }
+  .gallery-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .gallery-item {
+    border-radius: var(--r-md); overflow: hidden; background: var(--paper);
+    border: 1px solid var(--line);
+  }
+  .gallery-item img { width: 100%; cursor: zoom-in; }
+  @media (max-width: 720px) {
+    .gallery-grid.cols-2 { grid-template-columns: 1fr; }
+  }
+
+  /* ============ VIDEOS ============ */
+  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .video-card {
+    background: var(--paper); border-radius: var(--r-lg);
+    overflow: hidden; border: 1px solid var(--line); position: relative;
+  }
+  .video-thumb { aspect-ratio: 16/9; background: #000; position: relative; }
+  .video-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+  .play-btn {
+    position: absolute; inset: 0; margin: auto;
+    width: 72px; height: 72px; border-radius: 50%;
+    background: rgba(255,255,255,0.95); display: grid; place-items: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.2s;
+  }
+  .play-btn:hover { transform: scale(1.08); }
+  .play-btn::before {
+    content: ''; width: 0; height: 0;
+    border-left: 18px solid var(--turq-dark);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 4px;
+  }
+  .video-body { padding: 18px 22px; }
+  @media (max-width: 720px) {
+    .video-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ CONTACT ============ */
+  .contact {
+    background: linear-gradient(135deg, var(--ink) 0%, #1A3C40 100%);
+    color: white; border-radius: var(--r-xl); padding: 64px 48px;
+    text-align: center; overflow: hidden; position: relative;
+  }
+  .contact::before {
+    content: ''; position: absolute; top: -40%; right: -10%;
+    width: 480px; height: 480px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(66,192,197,0.25) 0%, transparent 60%);
+  }
+  .contact h2 { color: white; font-size: 48px; font-weight: 600; margin-bottom: 16px; position: relative; }
+  .contact h2 em { font-style: italic; color: var(--turq); }
+  .contact p { font-size: 18px; opacity: 0.8; max-width: 540px; margin: 0 auto 32px; position: relative; }
+  .contact-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    max-width: 760px; margin: 0 auto; position: relative;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.08); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.12); border-radius: var(--r-md);
+    padding: 22px 18px; transition: all 0.2s ease;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+  }
+  .contact-card:hover { background: rgba(66,192,197,0.18); border-color: var(--turq); transform: translateY(-3px); }
+  .contact-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: rgba(66,192,197,0.18); display: grid; place-items: center;
+    color: var(--turq); border: 1px solid rgba(66,192,197,0.28);
+  }
+  .contact-icon svg { width: 22px; height: 22px; }
+  .contact-label { font-size: 12.5px; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.08em; }
+  .contact-value { font-size: 15px; font-weight: 500; word-break: break-all; }
+  @media (max-width: 720px) {
+    .contact { padding: 40px 24px; }
+    .contact h2 { font-size: 32px; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 32px 24px; text-align: center;
+    color: var(--ink-soft); font-size: 13.5px;
+    border-top: 1px solid var(--line);
+  }
+  footer strong { color: var(--ink); }
+
+  /* ============ LIGHTBOX ============ */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(15,42,45,0.92); backdrop-filter: blur(8px);
+    display: none; align-items: center; justify-content: center; padding: 32px;
+    animation: fadeIn 0.25s ease;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 95vw; max-height: 90vh; border-radius: var(--r-md); box-shadow: 0 40px 80px rgba(0,0,0,0.6); }
+  .lightbox-close {
+    position: absolute; top: 24px; right: 24px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    color: white; font-size: 22px; cursor: pointer; display: grid; place-items: center;
+    backdrop-filter: blur(6px); transition: all 0.2s;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.25); transform: rotate(90deg); }
+
+  /* ============ UTILS ============ */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" aria-label="Principal">
+  <div class="nav-inner">
+    <a href="#" class="brand" aria-label="Walter Castañeda">
+      <span class="brand-dot">W</span>
+      <span>Walter Castañeda</span>
+    </a>
+    <div class="nav-links">
+      <a href="#prototipos">Prototipos</a>
+      <a href="#case-study">Case Study</a>
+      <a href="#diagramas">Flujos</a>
+      <a href="#dashboards">Dashboards</a>
+      <a href="#galeria">Galería</a>
+    </div>
+    <a href="#contacto" class="nav-cta">Contactar →</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div>
+    <span class="hero-eyebrow">Disponible · Disponible para nuevos retos</span>
+    <h1>Diseño <em>UI/UX</em><br/>centrado en personas.</h1>
+    <p class="hero-lead">
+      Soy <strong>Walter Alejandro Castañeda Torres</strong> — diseñador UI/UX en el Gobierno Regional de San Martín.
+      Construyo productos digitales accesibles, escalables y validados con usuarios reales.
+    </p>
+    <div class="hero-ctas">
+      <a href="#prototipos" class="btn btn-primary">Ver portafolio →</a>
+      <a href="#contacto" class="btn btn-ghost">Hablemos</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Prototipos entregados</div>
+      </div>
+      <div>
+        <div class="stat-num">06</div>
+        <div class="stat-label">Dashboards Power BI</div>
+      </div>
+      <div>
+        <div class="stat-num">03</div>
+        <div class="stat-label">Reconocimientos</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-figure">
+    <div class="hero-blob"></div>
+    <img src="assets/hero-walter.png" alt="Ilustración de Walter Castañeda con herramientas de diseño: Figma, Photoshop, Illustrator, InDesign, Power BI, VS Code, HTML, SQL." />
+  </div>
+</header>
+
+<!-- ============ TRUSTBAR ============ -->
+<section class="trustbar" aria-label="Reconocimientos">
+  <div class="trustbar-inner">
+    <div class="badge">
+      <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
+      <div>
+        <div class="badge-title">Reconocimiento UX por SERVIR</div>
+        <div class="badge-sub">Aplicación móvil Makinfo</div>
+      </div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="15" r="6"/><path d="M11.21 4.16 8 10"/><path d="M12.79 4.16 16 10"/><path d="M9 5 7 2H5"/><path d="m15 5 2-3h2"/><path d="m12 13 1.3 2.6L16 16l-2 1.95.5 2.85L12 19.4l-2.5 1.4L10 18l-2-1.95 2.7-.4Z"/></svg></div>
+      <div>
+        <div class="badge-title">Reconocido por DIRCETUR</div>
+        <div class="badge-sub">Prototipado Siscomtur</div>
+      </div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7.5" r="1.4" fill="currentColor" stroke="none"/><path d="M8.5 10.5 12 11.5l3.5-1"/><path d="m9 18 3-5 3 5"/><path d="M12 11.5V13"/></svg></div>
+      <div>
+        <div class="badge-title">Sello de Accesibilidad Digital AA</div>
+        <div class="badge-sub">Plataforma SIRID San Martín</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROTOTIPOS ============ -->
+<section id="prototipos">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">01 · Prototipos</div>
+      <h2 class="section-title">Productos digitales que están en producción.</h2>
+      <p class="section-lead">Diez prototipos UI/UX de alta fidelidad, varios de ellos hoy en uso por miles de ciudadanos de San Martín.</p>
+    </div>
+
+    <div class="filters" role="tablist" aria-label="Filtrar prototipos">
+      <button class="filter-chip active" data-filter="all">Todos <span class="filter-count">10</span></button>
+      <button class="filter-chip" data-filter="web">Web <span class="filter-count">5</span></button>
+      <button class="filter-chip" data-filter="movil">Móvil <span class="filter-count">5</span></button>
+      <button class="filter-chip" data-filter="awarded">Con reconocimiento <span class="filter-count">3</span></button>
+    </div>
+
+    <div class="proto-grid" id="proto-grid">
+      <!-- 1 -->
+      <article class="proto-card" data-cats="movil awarded">
+        <div class="proto-img-wrap">
+          <span class="proto-platform">Móvil</span>
+          <span class="proto-award">★ SERVIR</span>
+          <img src="assets/proto-01-makinfo.png" alt="Mockup de la app Makinfo con vista de información educativa." />
+        </div>
+        <div class="proto-body">
+          <h3 class="proto-name">Makinfo</h3>
+          <p class="proto-desc">App móvil del Gobierno Regional para consultar matrículas, plazas docentes, infraestructura y materiales educativos por institución (EBR).</p>
+          <div class="proto-meta"><span class="proto-link">Ver detalle →</span></div>
+        </div>
+      </article>
+      <!-- 2 -->
+      <article class="proto-card" data-cats="web awarded">
+        <div class="proto-img-wrap">
+          <span class="proto-platform">Web</span>
+          <span class="proto-award">★ DIRCETUR</span>
+          <img src="assets/proto-02-siscomtur.png" alt="Captura del sistema Siscomtur de competitividad turística." />
+        </div>
+        <div class="proto-body">
+          <h3 class="proto-name">Siscomtur</h3>
+          <p class="proto-desc">Sistema de Competitividad Turística para medir y analizar la realidad de cada zona de la región — toma de decisiones estratégicas.</p>
+          <div class="proto-meta"><span class="proto-link">Ver case study →</span></div>
+        </div>
+      </article>
+      <!-- 3 -->
+      <article class="proto-card" data-cats="web awarded">
+        <div class="proto-img-wrap">
+          <span class="proto-platform">Web</span>
+          <span class="proto-award">♿ Accesibilidad AA</span>
+          <img src="assets/proto-03-sirid.png" alt="Portal SIRID San Martín — sistema integral para personas con discapacidad." />
+        </div>
+        <div class="proto-body">
+          <h3 class="proto-name">SIRID San Martín</h3>
+          <p class="proto-desc">Portal accesible para administrar información de personas con discapacidad. Backoffice de gestión integral + WCAG AA.</p>
+          <div class="proto-meta"><a href="https://sirid.regionsanmartin.gob.pe/" target="_blank" rel="noopener" class="proto-link">Visitar sitio ↗</a></div>
+        </div>
+      </article>
+      <!-- 4 -->
+      <article class="proto-card" data-cats="web">
+        <div class="proto-img-wrap">
+          <span class="proto-platform">Web</span>
+          <img src="assets/proto-04-mesapartes-web.png" alt="Mesa de Partes Digital web." />
+        </div>
+        <div class="proto-body">
+          <h3 class="proto-name">Mesa de Partes Digital</h3>
+          <p class="proto-desc">Gestión y seguimiento en tiempo real de trámites TUPA y no TUPA. Diseño inclusivo con navegación adaptada para discapacidad visual.</p>
+          <div class="proto-meta"><span class="proto-link">Ver detalle →</span></div>
+        </div>
+      </article>
+      <!-- 5 -->
+      <article class="proto-card" data-cats="movil">
+        <div class="proto-img-wrap">
+          <span class="proto-platform">Móvil</span>
+          <img src="assets/proto-05-mesapartes-mov.png" alt="Mesa de Partes Digital versión móvil." />
+        </div>
+        <div class="proto-body">
+          <h3 class="proto-name">Mesa de Partes · Móvil</h3>
+          <p class="proto-desc">Versión móvil con funcionalidad TUPA completa para celulares y tabletas. Continuidad UX desde la web.</p>
+          <div class="proto-meta"><span class="proto-link">Ver detalle →</span></div>
+        </div>
+      </article>
+      <!-- 6 -->
+      <article class="proto-card" data-cats="web">
+        <div class="proto-img-wrap">
+          <span class="proto-platform">Web</span>
+          <img src="assets/proto-06-gscconvocatorias.png" alt="GSCConvocatorias — plataforma de convocatorias laborales." />
+        </div>
+        <div class="proto-body">
+          <h3 class="proto-name">GSCConvocatorias</h3>
+          <p class="proto-desc">Plataforma pública que centraliza convocatorias laborales del GRSM con enfoque en accesibilidad. Postulación digital y seguimiento integral.</p>
+          <div class="proto-meta"><span class="proto-link">Ver detalle →</span></div>
+        </div>
+      </article>
+      <!-- 7 -->
+      <article class="proto-card" data-cats="movil">
+        <div class="proto-img-wrap">
+          <span class="proto-platform">Móvil</span>
+          <img src="assets/proto-07-combustible.png" alt="App GSCombustible para distribución vehicular." />
+        </div>
+        <div class="proto-body">
+          <h3 class="proto-name">GSCombustible</h3>
+          <p class="proto-desc">Registro y control de la distribución y uso de combustible de la flota institucional para optimizar recursos.</p>
+          <div class="proto-meta"><span class="proto-link">Ver detalle →</span></div>
+        </div>
+      </article>
+      <!-- 8 -->
+      <article class="proto-card" data-cats="web">
+        <div class="proto-img-wrap">
+          <span class="proto-platform">Web</span>
+          <img src="assets/proto-08-visitasm.png" alt="Portal turístico Visita San Martín." />
+        </div>
+        <div class="proto-body">
+          <h3 class="proto-name">Visita San Martín</h3>
+          <p class="proto-desc">Promoción turística regional con sus cuatro destinos principales. Navegación fluida e intuitiva adaptada al viajero.</p>
+          <div class="proto-meta"><span class="proto-link">Ver detalle →</span></div>
+        </div>
+      </article>
+      <!-- 9 -->
+      <article class="proto-card" data-cats="movil">
+        <div class="proto-img-wrap">
+          <span class="proto-platform">Móvil</span>
+          <img src="assets/proto-09-presupuesto.png" alt="App Presupuesto — visualización de ejecución presupuestal." />
+        </div>
+        <div class="proto-body">
+          <h3 class="proto-name">Presupuesto Regional</h3>
+          <p class="proto-desc">Acceso ciudadano a la ejecución presupuestal del GRSM. Estadísticas comparables, accesible y enfocado en claridad.</p>
+          <div class="proto-meta"><span class="proto-link">Ver detalle →</span></div>
+        </div>
+      </article>
+      <!-- 10 -->
+      <article class="proto-card" data-cats="movil">
+        <div class="proto-img-wrap">
+          <span class="proto-platform">Móvil</span>
+          <img src="assets/proto-10-gstramite.png" alt="Implementación de nuevas funcionalidades en GSTramite." />
+        </div>
+        <div class="proto-body">
+          <h3 class="proto-name">GSTramite · Funcionalidades</h3>
+          <p class="proto-desc">Diseño e implementación de cronograma, seguimiento de procesos de selección y gestión de oficinas dentro de la app móvil GSTramite.</p>
+          <div class="proto-meta"><span class="proto-link">Ver detalle →</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASE STUDY ============ -->
+<section id="case-study" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">02 · Case study</div>
+      <h2 class="section-title">Siscomtur — De research a producto.</h2>
+      <p class="section-lead">Diseño centrado en el usuario basado en investigación, iteración y colaboración ágil para construir una solución digital estratégica y escalable.</p>
+    </div>
+
+    <div class="casestudy">
+      <div class="case-head">
+        <div>
+          <h3 class="case-title">Sistema de Competitividad Turística</h3>
+          <p style="color: var(--ink-soft);">Para la Dirección Regional de Comercio Exterior y Turismo de San Martín.</p>
+        </div>
+        <div class="case-meta">
+          <span class="tag">Scrum</span>
+          <span class="tag">Figma</span>
+          <span class="tag">Bizagi</span>
+          <span class="tag">UX Research</span>
+          <span class="tag">UI Design</span>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="step">
+          <div class="step-num">FASE 01</div>
+          <div class="step-name">Discover &amp; research</div>
+          <ul class="step-list">
+            <li>Levantamiento de información</li>
+            <li>Reuniones con el product owner</li>
+            <li>Análisis de sistema en Excel previo</li>
+          </ul>
+        </div>
+        <div class="step">
+          <div class="step-num">FASE 02</div>
+          <div class="step-name">User flow architecture</div>
+          <ul class="step-list">
+            <li>Diagramas de flujos</li>
+            <li>Arquitectura funcional</li>
+            <li>Modelado previo en Bizagi</li>
+          </ul>
+        </div>
+        <div class="step">
+          <div class="step-num">FASE 03</div>
+          <div class="step-name">Mid-fidelity wireframes</div>
+          <ul class="step-list">
+            <li>Wireframes en Figma</li>
+            <li>Estructura UX</li>
+            <li>Validación con TI</li>
+          </ul>
+        </div>
+        <div class="step">
+          <div class="step-num">FASE 04</div>
+          <div class="step-name">Interactive prototype</div>
+          <ul class="step-list">
+            <li>Prototipo de alta fidelidad</li>
+            <li>Componentes UI reutilizables</li>
+            <li>Dashboards interactivos</li>
+          </ul>
+        </div>
+        <div class="step">
+          <div class="step-num">FASE 05</div>
+          <div class="step-name">Agile validation</div>
+          <ul class="step-list">
+            <li>Marco Scrum</li>
+            <li>Feedback continuo del cliente</li>
+            <li>Iteraciones por sprint</li>
+          </ul>
+        </div>
+        <div class="step">
+          <div class="step-num">FASE 06</div>
+          <div class="step-name">Final impact &amp; recognition</div>
+          <ul class="step-list">
+            <li>Reconocimiento institucional</li>
+            <li>Impacto regional</li>
+            <li>Entrega a desarrollo</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-impact">
+        <div class="impact-icon">★</div>
+        <div>
+          <strong style="font-family: 'Fraunces', serif; font-size: 18px;">Impacto del proyecto</strong>
+          <p style="color: var(--ink-soft); font-size: 14.5px; margin-top: 4px;">
+            El prototipo desarrollado en Figma se convirtió en la <strong>referencia funcional</strong> para el desarrollo actual del sistema turístico regional.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIAGRAMAS ============ -->
+<section id="diagramas" style="background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">03 · Diagramación de flujos</div>
+      <h2 class="section-title">Modelado de procesos para clarificar lo complejo.</h2>
+    </div>
+    <div class="flow-grid">
+      <article class="flow-card">
+        <div class="flow-head">
+          <div class="flow-name">Estado BIM · GORESAM</div>
+          <div class="flow-desc">Flujo de proyectos del Plan de Gobierno Digital — pilotaje de proyectos.</div>
+        </div>
+        <div class="flow-img-wrap" data-zoom="assets/diagrama-01-bim.png">
+          <img src="assets/diagrama-01-bim.png" alt="Diagrama de flujo BPMN del proceso BIM en GORESAM." loading="lazy" />
+        </div>
+      </article>
+      <article class="flow-card">
+        <div class="flow-head">
+          <div class="flow-name">Mesa de Partes · TUPA y NO TUPA</div>
+          <div class="flow-desc">Flujo completo de trámite documentario en el GRSM.</div>
+        </div>
+        <div class="flow-img-wrap" data-zoom="assets/diagrama-02-tupa.png">
+          <img src="assets/diagrama-02-tupa.png" alt="Diagrama BPMN del flujo de trámite TUPA y no TUPA." loading="lazy" />
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DASHBOARDS ============ -->
+<section id="dashboards">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">04 · Dashboards · Power BI</div>
+      <h2 class="section-title">Datos que toman decisiones.</h2>
+      <p class="section-lead">Seis dashboards productivos para distintas Direcciones Regionales — desde salud y educación hasta infraestructura y finanzas.</p>
+    </div>
+    <div class="dash-grid">
+      <article class="dash-card" data-zoom="assets/dash-01-bim.png">
+        <div class="dash-img-wrap"><img src="assets/dash-01-bim.png" alt="Dashboard Estado BIM GORESAM" loading="lazy" /></div>
+        <div class="dash-body">
+          <div class="dash-cat">Infraestructura tecnológica</div>
+          <h3 class="dash-name">Estado BIM · GORESAM</h3>
+        </div>
+      </article>
+      <article class="dash-card" data-zoom="assets/dash-02-financiero.png">
+        <div class="dash-img-wrap"><img src="assets/dash-02-financiero.png" alt="Dashboard de ejecución financiera" loading="lazy" /></div>
+        <div class="dash-body">
+          <div class="dash-cat">Finanzas regionales</div>
+          <h3 class="dash-name">Ejecución financiera 2025</h3>
+        </div>
+      </article>
+      <article class="dash-card" data-zoom="assets/dash-03-mobiliario.png">
+        <div class="dash-img-wrap"><img src="assets/dash-03-mobiliario.png" alt="Dashboard de mobiliario y equipamiento educativo" loading="lazy" /></div>
+        <div class="dash-body">
+          <div class="dash-cat">Educación</div>
+          <h3 class="dash-name">Mobiliario y equipamiento de II.EE.</h3>
+        </div>
+      </article>
+      <article class="dash-card" data-zoom="assets/dash-04-nacimientos.png">
+        <div class="dash-img-wrap"><img src="assets/dash-04-nacimientos.png" alt="Dashboard de registro de nacimientos" loading="lazy" /></div>
+        <div class="dash-body">
+          <div class="dash-cat">Salud</div>
+          <h3 class="dash-name">Registro de nacimientos</h3>
+        </div>
+      </article>
+      <article class="dash-card" data-zoom="assets/dash-05-trafico.png">
+        <div class="dash-img-wrap"><img src="assets/dash-05-trafico.png" alt="Dashboard de infracciones de tráfico" loading="lazy" /></div>
+        <div class="dash-body">
+          <div class="dash-cat">Transportes</div>
+          <h3 class="dash-name">Infracciones de tráfico regional</h3>
+        </div>
+      </article>
+      <article class="dash-card" data-zoom="assets/dash-06-mortalidad.png">
+        <div class="dash-img-wrap"><img src="assets/dash-06-mortalidad.png" alt="Dashboard de estadísticas de mortalidad" loading="lazy" /></div>
+        <div class="dash-body">
+          <div class="dash-cat">Salud</div>
+          <h3 class="dash-name">Estadísticas de mortalidad</h3>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERÍA ============ -->
+<section id="galeria" style="background: var(--paper); border-top: 1px solid var(--line);">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">05 · Más trabajo</div>
+      <h2 class="section-title">Identidad, comunicación y materiales.</h2>
+    </div>
+    <div role="tablist" class="tabs">
+      <button class="tab active" data-tab="imagenes">Imágenes</button>
+      <button class="tab" data-tab="iconos">Iconos &amp; Logos</button>
+      <button class="tab" data-tab="manuales">Manuales</button>
+      <button class="tab" data-tab="videos">Videos</button>
+    </div>
+    <div class="gallery-panel active" id="panel-imagenes">
+      <div class="gallery-grid cols-2">
+        <div class="gallery-item"><img src="assets/imagenes.png" alt="Piezas gráficas: Mesa de Partes Digital y aviso de actualización de número." data-zoom="assets/imagenes.png" /></div>
+      </div>
+    </div>
+    <div class="gallery-panel" id="panel-iconos">
+      <div class="gallery-grid cols-2">
+        <div class="gallery-item"><img src="assets/iconos.png" alt="Set de iconos de accesibilidad diseñados a medida." data-zoom="assets/iconos.png" /></div>
+        <div class="gallery-item"><img src="assets/logos.png" alt="Logos SICORI, SIRID y MAKINFO." data-zoom="assets/logos.png" /></div>
+      </div>
+    </div>
+    <div class="gallery-panel" id="panel-manuales">
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="assets/manuales.png" alt="Manuales de usuario diseñados para el GRSM." data-zoom="assets/manuales.png" /></div>
+      </div>
+    </div>
+    <div class="gallery-panel" id="panel-videos">
+      <div class="video-grid">
+        <article class="video-card">
+          <div class="video-thumb">
+            <img src="assets/video-01.png" alt="Video promocional Mesa de Partes Digital." />
+            <button class="play-btn" aria-label="Reproducir video Mesa de Partes Digital"></button>
+          </div>
+          <div class="video-body">
+            <div class="dash-cat">Animación 2D</div>
+            <h3 class="dash-name">Mesa de Partes Digital</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="video-thumb">
+            <img src="assets/video-02.png" alt="Video promocional Makinfo." />
+            <button class="play-btn" aria-label="Reproducir video Makinfo"></button>
+          </div>
+          <div class="video-body">
+            <div class="dash-cat">Animación 2D</div>
+            <h3 class="dash-name">Makinfo</h3>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contacto" style="padding-bottom: 60px;">
+  <div class="container">
+    <div class="contact">
+      <h2>Diseñemos algo <em>memorable</em>.</h2>
+      <p>Si necesitas un diseñador UI/UX con foco en accesibilidad, productos públicos y experiencias de impacto — conversemos.</p>
+      <div class="contact-grid">
+        <a href="https://wa.me/51921363347" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg></div>
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-value">+51 921 363 347</div>
+        </a>
+        <a href="mailto:waltercastanedat@gmail.com" class="contact-card">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">waltercastanedat@gmail.com</div>
+        </a>
+        <a href="https://www.linkedin.com/in/walter-casta%C3%B1eda-torres/" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">Walter Castañeda</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Portafolio interactivo · <strong>Walter Alejandro Castañeda Torres</strong> · 2026 · Diseñado con foco en accesibilidad.
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada">
+  <button class="lightbox-close" aria-label="Cerrar">×</button>
+  <img src="" alt="" id="lightbox-img" />
+</div>
+
+<script>
+  // ============ FILTROS PROTOTIPOS ============
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const f = chip.dataset.filter;
+      document.querySelectorAll('.proto-card').forEach(card => {
+        const cats = card.dataset.cats.split(' ');
+        const show = (f === 'all') || cats.includes(f);
+        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        if (show) {
+          card.style.display = '';
+          requestAnimationFrame(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; });
+        } else {
+          card.style.opacity = '0'; card.style.transform = 'scale(0.95)';
+          setTimeout(() => { card.style.display = 'none'; }, 280);
+        }
+      });
+    });
+  });
+
+  // ============ TABS GALERÍA ============
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.gallery-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ============ LIGHTBOX ============
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  function openLightbox(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('[data-zoom]').forEach(el => {
+    el.addEventListener('click', e => {
+      const src = el.dataset.zoom || el.getAttribute('src');
+      openLightbox(src, el.alt);
+    });
+  });
+  document.querySelectorAll('.dash-card').forEach(card => {
+    card.addEventListener('click', () => openLightbox(card.dataset.zoom, card.querySelector('img').alt));
+  });
+  document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // ============ REVEAL ON SCROLL ============
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ============ VIDEOS placeholder ============
+  document.querySelectorAll('.play-btn').forEach(b => {
+    b.addEventListener('click', () => alert('Demo: aquí iría el video embed (YouTube/Vimeo). Walter puede pasarte el link y lo conectamos.'));
+  });
+</script>
+
+</body>
+</html>
